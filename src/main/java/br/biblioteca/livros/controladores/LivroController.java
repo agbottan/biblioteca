@@ -61,7 +61,7 @@ public class LivroController {
         Livro livro = this.livroRepository.findOne(id);
         Iterable<Autor> autores = autorRepository.findAll();
         
-        ModelAndView modelAndView = new ModelAndView("livro/form");
+        ModelAndView modelAndView = new ModelAndView("livros/form");
         modelAndView.addObject("autores", autores);
         modelAndView.addObject("livro", livro);
         
