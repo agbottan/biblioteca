@@ -1,6 +1,7 @@
 
 /* FONTES */
 
+/*
 @font-face {
   font-family: 'PT_Sans';
   src:
@@ -14,3 +15,28 @@
     url("fontes/PT_Sans-Web-Bold.ttf") format("truetype");
   font-weight: bold;
 }
+
+
+
+/* FONTES */
+
+/*
+
+Roboto
+
+thin    100
+light   300
+regular 400
+medium  500
+bold    700
+black   900
+
+*
+
+*/
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("./fontes/roboto/Roboto-Regular.ttf") format("truetype");
+}
+

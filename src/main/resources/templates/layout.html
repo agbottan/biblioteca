@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Biblioteca de livros</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="/css/estilos.css" />
+
+</head>
+<body>
+
+<header id="topo">
+    <div id="menu-topo">
+        <div class="contem">
+            <div class="logo-topo">
+                <a th:href="@{/}">Empréstimo de Livros</a>
+            </div>
+            <!-- MENU -->
+            <nav th:replace="menu :: menu"></nav>
+        </div>
+    </div>
+</header>
+
+<main class="principal principal-home">
+  <div class="contem">
+    <div class="pagina">
+        <div layout:fragment="content">-- Conteúdo --</div>
+    </div>
+  </div>
+</main>
+
+<!--  JS -->
+<!--
+<script type="text/javascript" src=""></script>
+-->
+
+</body>
+</html>

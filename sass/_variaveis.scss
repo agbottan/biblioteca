@@ -2,14 +2,19 @@
 
 /* CORES */
 
-$cor-azul: #003380;
-$cor-laranja: #ff6600;
+$cor-azul:         #003380;
+$cor-laranja:      #ff6600;
+$cor-verde-escuro: #030;
+$cor-verde-claro:  #030;
+
+$cor-tema-1: $cor-verde-escuro;
+$cor-tema-2: $cor-verde-claro;
 
 
 /* FONTES */
 
 $font-tamanho-base: 16px;
-$font-family-base: 'PT_Sans', Arial, Helvetica;
+$font-family-base: 'Roboto', Arial, Helvetica;
 $font-family-destaque: $font-family-base;
 $cor-texto-base: #444;
 
