@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+<!-- MENU -->
+<nav th:fragment="menu">
+    <ul>
+        <li class="item-n1">
+            <span class="lk-n1">Livros</span>
+            <ul class="sub">
+                <li><a href="@{/livros/list}">Listagem</a></li>
+                <li><a href="#">Novo</a></li>
+            </ul>
+        </li>
+
+        <li class="item-n1">
+            <span class="lk-n1">Autores</span>
+            <ul class="sub">
+                <li><a href="#">Menu 2.A</a></li>
+            </ul>
+        </li>
+
+        <li class="item-n1">
+            <span class="lk-n1">Empréstimos</span>
+            <ul class="sub">
+                <li><a href="#">Menu 2.A</a></li>
+            </ul>
+        </li>
+
+        <li class="item-n1">
+            <span class="lk-n1">Usuários</span>
+            <ul class="sub">
+                <li><a href="#">Menu 2.A</a></li>
+            </ul>
+        </li>
+
+        <li class="item-n1">
+            <a class="lk-n1" href="#">Sair</a>
+        </li>
+    </ul>
+</nav>
+
+</body>
+</html>

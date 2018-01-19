@@ -10,16 +10,16 @@
 .logo-topo {
   float: left;
   margin-right: 5%;
-  background-color: #fff;
   box-sizing: border-box;
+  display: block;
   height: $altura-topo-barra;
 
   a {
     display: block;
     box-sizing: border-box;
-    padding: 5px 10px 0;
     width: 100%;
     height: $altura-topo-barra;
+    line-height: $altura-topo-barra;
   }
 
   img {

@@ -20,11 +20,14 @@ public class Index {
 		return new ModelAndView("index");
 	}
 	
-	@GetMapping("/livros")
-	public ModelAndView livros() {
-		Iterable<Livro> livros = livroRepository.findAll();
-		return new ModelAndView("livros", "livros", livros);
+    @GetMapping("/livros")
+    public ModelAndView livros() {
+        Iterable<Livro> livros = livroRepository.findAll();
+        return new ModelAndView("livros", "livros", livros);
+    }
+
+    @GetMapping("/teste")
+	public ModelAndView teste() {
+		return new ModelAndView("teste");
 	}
-
-
 }
