@@ -1,0 +1,23 @@
+
+/* RODAPÉ */
+
+#rodape {
+  border-top: #ccc 3px solid;
+  background-color: #ddd;
+}
+
+.rodape-box {
+  @include cf;
+}
+
+.assina {
+  padding: 15px 0;
+  margin: 20px 0 40px 0;
+  text-align: center;
+  font-size: 13px;
+  color: $cor-azul;
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

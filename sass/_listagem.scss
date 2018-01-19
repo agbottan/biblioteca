@@ -1,0 +1,68 @@
+
+/* LISTAGENS */
+
+.lista {
+
+  width: 100%;
+
+  tr {
+    border: 1px #ccc solid;
+  }
+
+  .cabecalho {
+    background-color: #ddd;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .pri {
+    padding-left: 20px;
+  }
+
+  th {
+    text-align: left;
+    color: $cor-azul;
+
+    /* !!!
+    &:first-child {
+      border-radius: 3px 0 0 0;
+    }
+    
+    &:last-child {
+      border-radius: 0 3px 0 0;
+    }
+    */
+  }
+
+  td {
+  }
+
+  // Zebra
+  .item:nth-child(2n+1) {
+    background-color: #eee;
+  }
+
+  // Botões com Ações
+  .acoes {
+
+    width: 1%;
+    white-space: nowrap;
+
+    text-align: center;
+
+    .bt {
+      margin: 0 5px;
+    }
+  }
+}
+
+/* !!!
+.cabecalho {
+  position: fixed;
+  width: 100%;
+  top: 200px;
+  left: 0;
+}
+*/

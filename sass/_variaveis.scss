@@ -1,0 +1,32 @@
+
+
+/* CORES */
+
+$cor-azul: #003380;
+$cor-laranja: #ff6600;
+
+
+/* FONTES */
+
+$font-tamanho-base: 16px;
+$font-family-base: 'PT_Sans', Arial, Helvetica;
+$font-family-destaque: $font-family-base;
+$cor-texto-base: #444;
+
+
+/* BREAKPOINTS */
+
+$desktop: 800px;
+$mobile: $desktop - 1;
+
+
+/* DIMENSÕES FIXAS */
+
+// Topo
+
+$altura-topo-barra: 50px;
+$altura-topo: $altura-topo-barra;
+
+
+$altura-minima-pagina: 500px;
+$pad-menu-itens: 0 45px; // 24 | 36

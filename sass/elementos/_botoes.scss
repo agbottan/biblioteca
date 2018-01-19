@@ -1,0 +1,68 @@
+
+/* BOTÕES */
+
+.bt {
+
+  $bt-altura: 30px;
+
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ddd;
+  color: #444;
+
+  /*
+  padding: 3px 10px;
+  border-radius: 3px;
+  */
+
+  padding: 0 15px;
+  height: $bt-altura;
+  line-height: $bt-altura;
+  border-radius: floor($bt-altura / 2);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  /* TIPOS */
+
+  // Cores
+  $cor-acessa:   #090;
+  $cor-confirma: #090;
+  $cor-desfaz:   #b00;
+
+  // Novo
+  &.editar {
+    color: #fff;
+    background-color: $cor-confirma;
+
+    &:hover {
+      background-color: lighten($cor-confirma, 10%);
+    }
+  }
+
+  // Editar
+  &.editar {
+    color: #fff;
+    background-color: $cor-acessa;
+
+    &:hover {
+      background-color: lighten($cor-acessa, 10%);
+    }
+  }
+
+  // Excluir
+  &.excluir {
+    color: #fff;
+    background-color: $cor-desfaz;
+
+    &:hover {
+      background-color: lighten($cor-desfaz, 10%);
+    }
+  }
+}
+
+a.bt {
+  color: #444;
+}
+

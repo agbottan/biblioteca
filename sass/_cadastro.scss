@@ -1,0 +1,76 @@
+
+/* CADASTROS */
+
+.form-principal {
+
+  margin-left: 30px;
+
+  .cp {
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select,
+  textarea {
+
+    width: 400px;
+
+    background-color: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+
+    box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+    color: $cor-texto-base;
+    font-family: $font-family-base;
+    font-size: $font-tamanho-base;
+
+    &:focus {
+      outline: none !important;
+      border-color: #aaa;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+  }
+
+  textarea {
+    resize: none;
+    padding: 10px;
+    height: 100px;
+  }
+
+  label {
+    text-align: right;
+    margin-right: 15px;
+    display: inline-block;
+    width: 125px;
+
+    color: $cor-azul;
+  }
+
+  .acoes {
+    @include cf;
+    margin: 20px 0 30px;
+    text-align: right;
+    width: 540px;
+  }
+
+  .cp-box {
+    label {
+      margin-top: 5px;
+      vertical-align: top;
+    }
+  }
+
+  .cp-data {
+    input {
+      width: 110px;
+    }
+  }
+}

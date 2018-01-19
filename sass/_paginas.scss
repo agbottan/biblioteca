@@ -1,0 +1,54 @@
+
+/* INTERNAS */
+
+.pagina {
+  @extend .cf;
+  @extend .altura-pagina;
+  padding: 40px 40px 60px 40px;
+}
+
+.topo-pagina {
+  padding-bottom: 30px;
+}
+
+.titulo-pagina {
+  margin-bottom: 1em;
+  
+  border-bottom: 2px #ccc solid;
+  font-weight: normal;
+  font-size: 1.8em;
+  color: $cor-azul;
+}
+
+.principal {
+  background-color: #fff;
+}
+
+
+// Listagem com níveis
+
+.lista-links {
+
+  margin-bottom: 40px;
+
+  h2 {
+    padding-left: 20px;
+    margin-top: 1em;
+    color: $cor-azul;
+  }
+
+  p {
+    padding-left: 30px;
+    margin-bottom: 0.3em;
+  }
+}
+
+
+// Nenhum conteúdo encontrado
+
+.nenhum {
+  color: #c00;
+  text-align: center;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+}

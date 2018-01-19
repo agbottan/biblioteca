@@ -1,0 +1,28 @@
+
+/* TEXTO CORRIDO */
+
+.texto-corrido {
+
+  // Tags
+
+  h2 {
+    margin-top: 1.3em;
+    margin-bottom: 1em;
+    color: $cor-azul;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+
+// Separadores
+
+hr {
+  display: block;
+  border: none;
+  margin: 20px 10px auto;
+  height: 2px;
+  background: linear-gradient(90deg, #fff 0%, #ddd 10%, #ddd 90%, #fff 100%);
+}

@@ -1,0 +1,35 @@
+
+/* TOPO */
+
+#topo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
+}
+
+.logo-topo {
+  float: left;
+  margin-right: 5%;
+  background-color: #fff;
+  box-sizing: border-box;
+  height: $altura-topo-barra;
+
+  a {
+    display: block;
+    box-sizing: border-box;
+    padding: 5px 10px 0;
+    width: 100%;
+    height: $altura-topo-barra;
+  }
+
+  img {
+    display: block;
+    height: $altura-topo-barra - 10px;
+  }
+}
+
+
+// Body com Scroll
+
+.body-scroll {
+}

@@ -1,0 +1,60 @@
+
+/* UTILITÁRIOS */
+
+.ct {
+  text-align: center;
+}
+
+
+/* FONTES */
+
+h1 {
+  font-family: $font-family-destaque;
+  margin-bottom: 0.5em;
+}
+
+h2, h3 {
+  font-weight: normal;
+  font-family: $font-family-destaque;
+  margin-bottom: 0.3em;
+}
+
+a:hover {
+  color: $cor-azul;
+  text-decoration: underline;
+}
+
+
+/* GRID */
+
+body {
+  background: #ddd;
+  font-family: $font-family-base;
+  padding-top: $altura-topo;
+  font-size: $font-tamanho-base;
+  color: $cor-texto-base;
+}
+
+.contem {
+  margin: 0 6%;
+}
+
+.altura-pagina {
+  min-height: 500px;
+}
+
+
+/* SUBMENUS */
+
+.sub {
+  position: absolute;
+  display: none;
+}
+
+.item-n1 {
+  position: relative;
+
+  &:hover .sub {
+    display: block;
+  }
+}

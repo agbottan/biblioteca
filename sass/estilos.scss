@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/* TESTE */
+@import "mixins/teste.scss"; // !!! TESTE
+
+
+/* MIXINS */
+
+@import "mixins/uteis.scss";    // Classes Úteis
+@import "mixins/clearfix.scss"; // Clearfix
+
+
+/* RESET e CONFIG */
+
+@import "variaveis.scss"; // Variáveis
+@import "reset.scss";     // Reset - Normalize
+@import "fontes.scss";    // Fontes
+@import "desktop.scss";   // Desktop
+@import "mobile.scss";    // Mobile
+
+
+/* LAYOUT */
+
+@import "geral.scss";         // Todas as Páginas
+@import "topo.scss";          // Topo
+@import "topo-menu.scss";     // Menu do Topo
+@import "topo-menu-sub.scss"; // Submenus do Topo
+@import "rodape.scss";        // Rodapé
+
+
+/* COMUNS */
+
+@import "elementos/botoes.scss"; // Texto Corrido
+@import "texto-corrido.scss";    // Texto Corrido
+@import "paginas.scss";          // Páginas Internas
+
+
+/* PÁGINAS */
+
+@import "listagem.scss"; // Listagens
+@import "cadastro.scss"; // Cadastros
