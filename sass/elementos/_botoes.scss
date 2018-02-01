@@ -3,25 +3,22 @@
 
 .bt {
 
-  $bt-altura: 30px;
+  $altura-bt: 35px;
 
+  height: $altura-bt;
+  line-height: $altura-bt;
   display: inline-block;
   cursor: pointer;
-  background-color: #ddd;
+  border-radius: 4px;
+  padding: 0 20px;
+  border: none;  
   color: #444;
-
-  /*
-  padding: 3px 10px;
-  border-radius: 3px;
-  */
-
-  padding: 0 15px;
-  height: $bt-altura;
-  line-height: $bt-altura;
-  border-radius: floor($bt-altura / 2);
+  background: #ddd;
+  font-size: 105%;
 
   &:hover {
     text-decoration: none;
+    background: #ccc;
   }
 
   /* TIPOS */

@@ -10,7 +10,11 @@
 
 h1 {
   font-family: $font-family-destaque;
-  margin-bottom: 0.5em;
+  margin-bottom: 40px;
+  font-weight: normal;
+  padding-bottom: 5px;
+  border-bottom: 2px #eee solid;
+  color: $cor-tema-3;
 }
 
 h2, h3 {

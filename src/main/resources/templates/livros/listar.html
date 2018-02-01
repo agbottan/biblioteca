@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Lista dos livros</title>
+</head>
+<body>
+    <h1 layout:fragment="header">
+        <a th:href="@{/livros/novo}"  class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i></a>
+        Livros
+    </h1>
+    <div layout:fragment="content" class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Título</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="livro : ${livros}">
+                    <th scope="row" th:text="${livro.id}">1</th>
+                    <td><a href="#" th:href="@{'/livros/'+${livro.id}}" th:text="${livro.nome}"> Título </a></td>
+                    <td><a href="#" th:href="@{'/livros/alterar/'+${livro.id}}"> Altera </a></td>
+                    <td><a href="#" th:href="@{'/livros/excluir/'+${livro.id}}"> Excluir </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -8,6 +8,7 @@
 <!-- MENU -->
 <nav th:fragment="menu">
     <ul>
+<<<<<<< HEAD
         <li class="item-n1">
             <span class="lk-n1">Livros</span>
             <ul class="sub">
@@ -38,6 +39,50 @@
         </li>
 
         <li class="item-n1">
+=======
+
+        <!-- Página Inicial -->
+        <li class="item-n1">
+            <a class="lk-n1" th:href="@{/}">Início</a>
+        </li>
+
+        <!-- Livros -->
+        <li class="item-n1">
+            <span class="lk-n1">Livros</span>
+            <ul class="sub">
+                <li><a th:href="@{/livros/listar}">Títulos disponíveis</a></li>
+                <li><a th:href="@{/livros/novo}">Inserir novo título</a></li>
+            </ul>
+        </li>
+
+        <!-- Autores -->
+        <li class="item-n1">
+            <span class="lk-n1">Autores</span>
+            <ul class="sub">
+                <li><a th:href="@{/autores/listar}">Autores disponíveis</a></li>
+                <li><a th:href="@{/autores/novo}">Inserir novo autor</a></li>
+            </ul>
+        </li>
+
+        <!-- Empréstimos -->
+        <li class="item-n1">
+            <span class="lk-n1">Empréstimos</span>
+            <ul class="sub">
+                <li><a th:href="@{/emprestimos/listar}">Empréstimos em aberto</a></li>
+            </ul>
+        </li>
+
+        <!-- Usuários -->
+        <li class="item-n1">
+            <span class="lk-n1">Usuários</span>
+            <ul class="sub">
+                <li><a th:href="@{/emprestimos/listar}">Usuários cadastrados</a></li>
+                <li><a th:href="@{/usuarios/novo}">Inserir novo usuário</a></li>
+            </ul>
+        </li>
+
+        <li class="item-n1 pad">
+>>>>>>> Namespace
             <a class="lk-n1" href="#">Sair</a>
         </li>
     </ul>

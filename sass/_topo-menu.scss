@@ -2,26 +2,49 @@
 /* TOPO > MENU */
 
 #menu-topo {
+
   position: relative;
   height: $altura-topo-barra;
+  background: linear-gradient(#222, #444);
 
-  background: linear-gradient(#ddd, #eee);
-  box-shadow: 0 2px 2px rgba(0,0,0,.2);
+  nav {
+    float: right;
+  }
 
   .item-n1 {
+
     display: block;
     float: left;
-    border-right: 1px #ccc solid;
+    border-right: 2px #222 solid;
+
+    &:first-child {
+      border-left: 2px #222 solid;
+    }
+
+    &.pad {
+      margin-left: 150px;
+      border-left: 2px #222 solid;
+    }
+
+    .lk-n1 {
+      color: #ddd;
+      display: inline-block;
+      height: $altura-topo-barra;
+      line-height: $altura-topo-barra;
+      padding: $pad-menu-itens;
+    }
 
     &:first-child {
         border-left: 1px #ccc solid;
     }
 
     &:hover .lk-n1 {
-      background: linear-gradient(#ccc, #ddd);
+      color: $cor-verde-claro;
+      background: linear-gradient(#000, #333);
     }
   }
 
+<<<<<<< HEAD
   .lk-n1 {
     color: $cor-tema-1;
     display: inline-block;
@@ -30,30 +53,42 @@
     padding: $pad-menu-itens;
     font-weight: bold;
   }
+=======
+>>>>>>> Namespace
 
-  /* Submenus */
+  /* --- SUBMENUS --- */
+
   .sub {
     overflow: hidden;
     top: 100%;
     left: 0;
+    min-width: 100%;
 
-    border-radius: 0 0 2px 2px;
-    background-color: #eee;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(#222, #444);
 
     li {
       white-space: nowrap;
-      font-weight: bold;
-      border-top: 1px #ccc solid;
+      border-top: 2px #222 solid;
+
+      &:first-child {
+        border-top: none;
+      }
     }
 
     a {
       display: block;
       padding: 10px 20px;
+<<<<<<< HEAD
       color: $cor-tema-1;
+=======
+      color: #fff;
+>>>>>>> Namespace
 
       &:hover {
-        background-color: #ddd;
+        color: $cor-tema-1;
+        background-color: #000;
+        text-decoration: none;
       }
     }
   }
