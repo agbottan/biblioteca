@@ -1,4 +1,4 @@
-package br.biblioteca.controladores;
+package br.biblioteca.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +24,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserControllers {
+public class UserController {
 
 	@Autowired
 	private SecurityService securityService;
@@ -63,12 +63,12 @@ public class UserControllers {
         };
 
         // Ok
-        return new ModelAndView("redirect:/user/list");
+        return new ModelAndView("redirect:/user/listar");
 	}
 
 	@GetMapping("/list")
 	public ModelAndView list() {
-		return new ModelAndView("/user/list");
+		return new ModelAndView("/user/listar");
 	}
 	
 	@GetMapping("/listadmin")
@@ -99,7 +99,7 @@ public class UserControllers {
 
 		try {
 			securityService.login(userForm.getUsername(), password);
-			return new ModelAndView("redirect:/user/list");
+			return new ModelAndView("redirect:/user/listar");
 			
 		} catch (Exception e) {
 			

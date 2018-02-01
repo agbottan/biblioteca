@@ -1,4 +1,4 @@
-package br.biblioteca.controladores;
+package br.biblioteca.controllers;
 
 import javax.validation.Valid;
 
@@ -27,13 +27,12 @@ public class LivroController {
 	@Autowired
     private AutorRepository autorRepository;
 
-	@GetMapping("/")
+	@GetMapping(value= {"", "/", "/listar"})
     public ModelAndView livros() {
 
         Iterable<Livro> livros = livroRepository.findAll();
-        return new ModelAndView("livros/list", "livros", livros);
+        return new ModelAndView("livros/listar", "livros", livros);
     }
-	
 	
 	@GetMapping("/novo")
     public ModelAndView createForm(@ModelAttribute Livro livro) {

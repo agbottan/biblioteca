@@ -2,13 +2,13 @@
 
 /* CORES */
 
-$cor-azul:         #003380;
-$cor-laranja:      #ff6600;
-$cor-verde-escuro: #030;
-$cor-verde-claro:  #030;
+$cor-verde-dark:    #609a14;
+$cor-verde-escuro:  #76bd1d;
+$cor-verde-claro:   #96dd3c;
 
-$cor-tema-1: $cor-verde-escuro;
-$cor-tema-2: $cor-verde-claro;
+$cor-tema-1: $cor-verde-claro;
+$cor-tema-2: $cor-verde-escuro;
+$cor-tema-3: $cor-verde-dark;
 
 
 /* FONTES */
@@ -29,9 +29,8 @@ $mobile: $desktop - 1;
 
 // Topo
 
-$altura-topo-barra: 50px;
+$altura-topo-barra: 40px;
 $altura-topo: $altura-topo-barra;
 
-
 $altura-minima-pagina: 500px;
-$pad-menu-itens: 0 45px; // 24 | 36
+$pad-menu-itens: 0 35px; // 24 | 36

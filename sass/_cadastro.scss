@@ -49,9 +49,9 @@
     text-align: right;
     margin-right: 15px;
     display: inline-block;
+    color: #777;
     width: 125px;
-
-    color: $cor-tema-1;
+    font-size: 120%;
   }
 
   .acoes {
@@ -71,6 +71,19 @@
   .cp-data {
     input {
       width: 110px;
+    }
+  }
+
+
+  // -------- RODAPÉ BOTÕES
+
+  .bt-base {
+
+    margin-top: 30px;
+    text-align: right;
+
+    .bt {
+      margin: 0 3px;
     }
   }
 }

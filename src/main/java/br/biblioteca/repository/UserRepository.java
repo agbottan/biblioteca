@@ -18,16 +18,17 @@ public class UserRepository {
 	UserRepository() {
 		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		 
-		User basic = new User("teste", passwordEncoder.encode("123456"));
-		basic.getRoles().add(new Role("ROLE_BASIC"));
-		users.add(basic);
 		
-		User admin = new User("admin", passwordEncoder.encode("123456"));
-		admin.getRoles().add(new Role("ROLE_BASIC"));
-		admin.getRoles().add(new Role("ROLE_ADMIN"));
-		users.add(admin);
-		
+        /* !!! */
+        User basic = new User("teste", passwordEncoder.encode("123456"));
+        basic.getRoles().add(new Role("ROLE_BASIC"));
+        users.add(basic);
+        
+        User admin = new User("admin", passwordEncoder.encode("123456"));
+        admin.getRoles().add(new Role("ROLE_BASIC"));
+        admin.getRoles().add(new Role("ROLE_ADMIN"));
+        users.add(admin);
+        /* */
 	}
 
 	public User findByUsername(String username) {
@@ -41,20 +42,15 @@ public class UserRepository {
 			}
 
 		}
-		
-		System.out.println("lido " + user);
 
 		return user;
 	}
 
 	public void save(User user) {
 		users.add(user);
-		System.out.println("adicionado " + user);
 	}
-
 
 	public List<User> findAll(){
 		return users;
 	}
-
 }

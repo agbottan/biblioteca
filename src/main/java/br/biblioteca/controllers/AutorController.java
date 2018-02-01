@@ -1,4 +1,4 @@
-package br.biblioteca.controladores;
+package br.biblioteca.controllers;
 
 import javax.validation.Valid;
 
@@ -26,7 +26,7 @@ public class AutorController {
     public ModelAndView livros() {
 
         Iterable<Autor> autores = autorRepository.findAll();
-        return new ModelAndView("autores/list", "autores", autores);
+        return new ModelAndView("autores/listar", "autores", autores);
     }
 	
 	
