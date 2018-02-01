@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
+<<<<<<< HEAD
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8" />
@@ -16,3 +17,30 @@
 
 </body>
 </html>
+=======
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Página inicial &ndash; Empréstimo de Livros</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container">
+        <h1>Página Inicial</h1>
+        <form id="userForm" class="form-principal" th:action="@{/user/autentication}" th:object="${userForm}" action="#" method="post">
+            <div class="cp">
+                <label for="">Login&thinsp;:</label>
+                <input type="text" th:field="*{username}"/><span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span>
+            </div>
+            <div class="cp">
+                <label for="">Senha&thinsp;:</label>
+                <input type="text" th:field="*{password}"/><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span>
+            </div>
+            <div class="bt-base">
+                <button class="bt" type="submit" name="login">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+>>>>>>> Namespace
