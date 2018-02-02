@@ -50,11 +50,11 @@
             </ul>
         </li>
 
-        <!-- SAIR
+        <!-- SAIR -->
         <li class="item-n1 pad">
-            <a class="lk-n1" href="#">Sair</a>
+        	<span sec:authentication="name"></span>
+            <a class="lk-n1" th:href="@{/user/logout}">Sair</a>
         </li>
-        -->
     </ul>
 </nav>
 
