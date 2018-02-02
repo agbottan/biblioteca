@@ -1,3 +1,4 @@
+/*
 package br.biblioteca.controllers;
 
 import javax.validation.Valid;
@@ -59,3 +60,4 @@ public class UsuarioController {
         return new ModelAndView("redirect:/usuarios/");
 	}
 }
+*/

@@ -18,8 +18,8 @@ import br.biblioteca.repository.AutorRepository;
 import br.biblioteca.repository.LivroRepository;
 
 @Controller
-@RequestMapping("/livros")
-public class LivroController {
+@RequestMapping("/emprestimos")
+public class EmprestimoController {
 
 	@Autowired
     private LivroRepository livroRepository;

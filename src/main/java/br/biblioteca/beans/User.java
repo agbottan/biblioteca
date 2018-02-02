@@ -3,20 +3,32 @@ package br.biblioteca.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+@Entity
 public class User {
+
+	@Id
+	@GeneratedValue
+	private Long id;
 
 	private String username;
 
 	private String password;
-	
-	public User() { }
+
+	@OneToMany(mappedBy="id") // id em 'roles'
+	private List<Role> roles = new ArrayList<>();
+
+	public User() {}
 
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
-
-	private List<Role> roles = new ArrayList<>();
 
 	public String getUsername() {
 		return username;

@@ -6,12 +6,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <form id="autorForm" class="form-principal" th:action="@{/autores/(form)}" method="post" th:object="${autor}" action="#" >
-        <input type="hidden"  th:field="*{id}" />
-        Nome:<input type="text" th:field="*{nome}" />
-        <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
-        <br/>
-        <input type="submit" value="gravar" />
-    </form>
+	<div layout:fragment="content" class="container">
+		<form id="autorForm" class="form-principal" th:action="@{/autores/(form)}" method="post" th:object="${autor}" action="#" >
+			<input type="hidden"  th:field="*{id}" />
+			Nome:<input type="text" th:field="*{nome}" />
+			<span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
+			<br/>
+			<input type="submit" value="gravar" />
+		</form>
+	</div>
 </body>
 </html>

@@ -9,6 +9,7 @@
 <nav th:fragment="menu">
     <ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <li class="item-n1">
             <span class="lk-n1">Livros</span>
             <ul class="sub">
@@ -24,26 +25,22 @@
             </ul>
         </li>
 
+=======
+        <!-- Página Inicial -->
+>>>>>>> Usuario
         <li class="item-n1">
-            <span class="lk-n1">Empréstimos</span>
-            <ul class="sub">
-                <li><a href="#">Menu 2.A</a></li>
-            </ul>
+            <a class="lk-n1" th:href="@{/}">Início</a>
         </li>
 
+        <!-- Usuários -->
         <li class="item-n1">
             <span class="lk-n1">Usuários</span>
             <ul class="sub">
-                <li><a href="#">Menu 2.A</a></li>
+                <li><a th:href="@{/user/login}">Login</a></li>
+                <li><a th:href="@{/user/registration}">Cadastrar Usuário</a></li>
+                <li><a th:href="@{/user/listar}">Lista Basic</a></li>
+                <li><a th:href="@{/user/listadmin}">Lista Admin</a></li>
             </ul>
-        </li>
-
-        <li class="item-n1">
-=======
-
-        <!-- Página Inicial -->
-        <li class="item-n1">
-            <a class="lk-n1" th:href="@{/}">Início</a>
         </li>
 
         <!-- Livros -->
@@ -72,19 +69,15 @@
             </ul>
         </li>
 
-        <!-- Usuários -->
-        <li class="item-n1">
-            <span class="lk-n1">Usuários</span>
-            <ul class="sub">
-                <li><a th:href="@{/emprestimos/listar}">Usuários cadastrados</a></li>
-                <li><a th:href="@{/usuarios/novo}">Inserir novo usuário</a></li>
-            </ul>
-        </li>
-
+        <!-- SAIR
         <li class="item-n1 pad">
+<<<<<<< HEAD
 >>>>>>> Namespace
+=======
+>>>>>>> Usuario
             <a class="lk-n1" href="#">Sair</a>
         </li>
+        -->
     </ul>
 </nav>
 

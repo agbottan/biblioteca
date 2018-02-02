@@ -1,3 +1,4 @@
+/*
 package br.biblioteca.beans;
 
 import java.util.ArrayList;
@@ -24,17 +25,6 @@ public class Usuario {
     @NotNull
     @Size(min = 8, max = 40)
 	private String passsword;
-	
-	@OneToMany(mappedBy="usuario")
-	private List<Review> reviews = new ArrayList<>();
-	
-	public List<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
-	}
 
 	public Long getId() {
 		return id;
@@ -60,3 +50,4 @@ public class Usuario {
 		this.passsword = passsword;
 	}
 }
+*/
