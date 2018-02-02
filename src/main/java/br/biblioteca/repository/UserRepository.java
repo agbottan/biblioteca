@@ -19,7 +19,7 @@ public class UserRepository {
 		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
-        /* !!! */
+		/* !!!
         User basic = new User("teste", passwordEncoder.encode("123456"));
         basic.getRoles().add(new Role("ROLE_BASIC"));
         users.add(basic);
@@ -28,7 +28,7 @@ public class UserRepository {
         admin.getRoles().add(new Role("ROLE_BASIC"));
         admin.getRoles().add(new Role("ROLE_ADMIN"));
         users.add(admin);
-        /* */
+        */
 	}
 
 	public User findByUsername(String username) {

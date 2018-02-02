@@ -34,27 +34,12 @@
       padding: $pad-menu-itens;
     }
 
-    &:first-child {
-        border-left: 1px #ccc solid;
-    }
-
     &:hover .lk-n1 {
       color: $cor-verde-claro;
       background: linear-gradient(#000, #333);
     }
   }
 
-<<<<<<< HEAD
-  .lk-n1 {
-    color: $cor-tema-1;
-    display: inline-block;
-    height: $altura-topo-barra;
-    line-height: $altura-topo-barra;
-    padding: $pad-menu-itens;
-    font-weight: bold;
-  }
-=======
->>>>>>> Namespace
 
   /* --- SUBMENUS --- */
 
@@ -79,11 +64,7 @@
     a {
       display: block;
       padding: 10px 20px;
-<<<<<<< HEAD
-      color: $cor-tema-1;
-=======
       color: #fff;
->>>>>>> Namespace
 
       &:hover {
         color: $cor-tema-1;

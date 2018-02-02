@@ -1,3 +1,4 @@
+
 package br.biblioteca.beans;
 
 import java.util.Date;
@@ -54,7 +55,4 @@ public class Emprestimo {
 	public void setDataDevolucao(Date dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
-	
-	
-
 }

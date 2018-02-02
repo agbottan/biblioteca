@@ -1,10 +1,11 @@
 package br.biblioteca.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.biblioteca.beans.Role;
+// import br.biblioteca.beans.Role;
 import br.biblioteca.beans.User;
 import br.biblioteca.repository.UserRepository;
 
@@ -20,9 +21,10 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
+    @Transactional
     public void save(User user) {
     	user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.getRoles().add(new Role("ROLE_BASIC"));
+        // !!! user.getRoles().add(new Role("ROLE_BASIC"));
         userRepository.save(user);
     }
 
@@ -30,7 +32,6 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
 
         return userRepository.findByUsername(username);
-
     }
 
     @Override

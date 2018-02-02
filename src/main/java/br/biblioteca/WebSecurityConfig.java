@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.POST, "/user/registration").permitAll()
 
         // ROLE - BASIC
-        .antMatchers(HttpMethod.GET, "/user/list").hasRole("BASIC")
+        .antMatchers(HttpMethod.GET, "/user/listar").hasRole("BASIC")
 
         // ROLE - ADMIN
         .antMatchers(HttpMethod.GET, "/user/listadmin").hasRole("ADMIN")

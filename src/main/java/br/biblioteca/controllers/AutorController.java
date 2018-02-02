@@ -22,13 +22,12 @@ public class AutorController {
 	@Autowired
     private AutorRepository autorRepository;
 	
-	@GetMapping("/")
-    public ModelAndView livros() {
+	@GetMapping(value= {"", "/", "/listar"})
+    public ModelAndView autores() {
 
         Iterable<Autor> autores = autorRepository.findAll();
         return new ModelAndView("autores/listar", "autores", autores);
     }
-	
 	
 	@GetMapping("/novo")
     public String createForm(@ModelAttribute Autor autor) {

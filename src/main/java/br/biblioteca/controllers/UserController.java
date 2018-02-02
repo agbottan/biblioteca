@@ -38,7 +38,7 @@ public class UserController {
 	@Autowired
 	private LoginValidator loginValidator;
 
-	@GetMapping("/login")
+	@GetMapping(value= {"", "/", "/login"})
 	public ModelAndView login() {
 		return new ModelAndView("user/form", "userForm", new User());
 	}
@@ -66,8 +66,8 @@ public class UserController {
         return new ModelAndView("redirect:/user/listar");
 	}
 
-	@GetMapping("/list")
-	public ModelAndView list() {
+	@GetMapping("/listar")
+	public ModelAndView listar() {
 		return new ModelAndView("/user/listar");
 	}
 	

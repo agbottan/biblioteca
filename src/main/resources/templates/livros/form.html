@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
-
-    <form id="livroForm" th:action="@{/livros/(form)}" method="post" th:object="${livro}" action="#" >
-        <input type="hidden"  th:field="*{id}" />
-        Título:<input type="text" th:field="*{nome}" />
-        <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
-        <br/>
-        Total de Páginas: <input type="text" th:field="*{quantidadePaginas}" />
-        <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Quantidade de pagina Error</span>
-        <br/>
-        
-        <label for="staticAutor">Autor</label>
-        <select th:field="*{autor}">
-          <option th:each="autor : ${autores}"  th:value="${autor.id}" th:text="${autor.nome}">Nome do autor</option>
-    	</select>
-        
-        <input type="submit" value="gravar" />
-    </form>
+    <div layout:fragment="content" class="container">
+        <form id="livroForm" th:action="@{/livros/(form)}" method="post" th:object="${livro}" action="#" >
+            <input type="hidden"  th:field="*{id}" />
+            Título:<input type="text" th:field="*{nome}" />
+            <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
+            <br/>
+            Total de Páginas: <input type="text" th:field="*{quantidadePaginas}" />
+            <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Quantidade de pagina Error</span>
+            <br/>
+            
+            <label for="staticAutor">Autor</label>
+            <select th:field="*{autor}">
+              <option th:each="autor : ${autores}"  th:value="${autor.id}" th:text="${autor.nome}">Nome do autor</option>
+            </select>
+            
+            <input type="submit" value="gravar" />
+        </form>
+    </div>
 </body>
 </html>

@@ -14,6 +14,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 @Entity
 public class Livro {
 	
@@ -36,10 +37,7 @@ public class Livro {
 	@ManyToOne
 	@JoinColumn(name = "autor_id")
 	private Autor autor;
-	
-	@OneToMany(mappedBy="livro")
-	private List<Review> reviews = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy="livro")
 	private List<Emprestimo> emprestimos = new ArrayList<>();
 		
@@ -49,14 +47,6 @@ public class Livro {
 
 	public void setEmprestimos(List<Emprestimo> emprestimos) {
 		this.emprestimos = emprestimos;
-	}
-
-	public List<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
 	}
 
 	public Autor getAutor() {

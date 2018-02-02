@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-
-    <form id="userForm" th:action="@{/user/registration}" th:object="${userForm}" action="#" method="post">
-        <input type="text" th:field="*{username}"/><span  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span><br/>
-        <input type="text" th:field="*{password}"/><span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
-        <input type="submit" name="login" value="login" />
-    </form>
-
+    <div layout:fragment="content" class="container">
+        <h1>Cadastrar Usuário</h1>
+	    <form id="userForm" class="form-principal" th:action="@{/user/registration}" th:object="${userForm}" action="#" method="post">
+	    	<div class="cp">
+	    		<label for="">Nome&thinsp;:</label>
+	        	<input type="text" th:field="*{username}"/><span  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span><br/>
+	    	</div>
+	    	<div class="cp">
+	        	<label for="">Senha&thinsp;:</label>
+	        	<input type="text" th:field="*{password}"/><span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
+	        </div>
+	        <div class="bt-base">
+	        	<input class="bt" type="submit" name="cadastrar" value="Cadastrar" />
+	    	</div>
+	    </form>
+    </div>
 </body>
 </html>
