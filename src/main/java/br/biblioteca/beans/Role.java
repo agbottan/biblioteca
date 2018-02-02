@@ -3,6 +3,9 @@ package br.biblioteca.beans;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 
 @Entity
@@ -12,11 +15,18 @@ public class Role {
 	@GeneratedValue
 	private Long id;
 
-	String role;
+	private String role;
 	
-	public Role(String role) {
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
+	public Role(String role, User usuario) {
 		this.role = role;
+		this.user = usuario;
 	}
+
+	public Role() {}
 
 	public String getRole() {
 		return role;
@@ -24,6 +34,14 @@ public class Role {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public User getUsuario(){
+		return user;
+	}
+
+	public Long getId(){
+		return id;
 	}
 
 	@Override

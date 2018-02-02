@@ -13,7 +13,7 @@
 		<h2>Acesso Liberado <span sec:authentication="name"></span></h2>
 		<div>
 			<ul>
-				<li><a th:href="@{/user/list}" href="#"> Lista Basica </a></li>
+				<li><a th:href="@{/user/listar}" href="#"> Lista Basica </a></li>
 				<li sec:authorize="hasAuthority('ROLE_ADMIN')" ><a th:href="@{/user/listadmin}" href="#"> Lista Admin </a></li>
 				<li><a th:href="@{/user/logout}" href="#"> Logout </a></li>
 			</ul>

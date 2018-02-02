@@ -46,15 +46,15 @@
   .sub {
     overflow: hidden;
     top: 100%;
-    left: 0;
+    left: -2px;
     min-width: 100%;
 
     border-radius: 0 0 3px 3px;
-    background: linear-gradient(#222, #444);
+    background: #222;
 
     li {
       white-space: nowrap;
-      border-top: 2px #222 solid;
+      border-top: 1px #444 solid;
 
       &:first-child {
         border-top: none;
