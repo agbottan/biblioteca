@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.biblioteca.beans.Autor;
-import br.biblioteca.beans.Livro;
+import br.biblioteca.model.Autor;
+import br.biblioteca.model.Livro;
 import br.biblioteca.repository.AutorRepository;
 import br.biblioteca.repository.LivroRepository;
 

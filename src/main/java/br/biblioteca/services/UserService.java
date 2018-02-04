@@ -1,6 +1,6 @@
 package br.biblioteca.services;
 
-import br.biblioteca.beans.User;
+import br.biblioteca.model.User;
 
 import java.util.List;
 

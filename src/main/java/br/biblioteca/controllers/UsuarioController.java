@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.biblioteca.beans.Usuario;
+import br.biblioteca.model.Usuario;
 import br.biblioteca.repository.UsuarioRepository;
 
 @Controller

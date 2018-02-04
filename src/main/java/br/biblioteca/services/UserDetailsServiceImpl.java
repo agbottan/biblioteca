@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.biblioteca.beans.Role;
-import br.biblioteca.beans.User;
+import br.biblioteca.model.Role;
+import br.biblioteca.model.User;
 
 import br.biblioteca.repository.UserRepository;
 

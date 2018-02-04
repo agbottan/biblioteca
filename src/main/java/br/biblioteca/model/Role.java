@@ -1,4 +1,4 @@
-package br.biblioteca.beans;
+package br.biblioteca.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

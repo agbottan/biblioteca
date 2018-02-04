@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import br.biblioteca.beans.User;
+import br.biblioteca.model.User;
 import br.biblioteca.repository.UserRepository;
 
 @Service

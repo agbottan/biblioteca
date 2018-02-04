@@ -5,8 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-// import br.biblioteca.beans.Role;
-import br.biblioteca.beans.User;
+// import br.biblioteca.model.Role;
+import br.biblioteca.model.User;
 import br.biblioteca.repository.UserRepository;
 
 import java.util.List;

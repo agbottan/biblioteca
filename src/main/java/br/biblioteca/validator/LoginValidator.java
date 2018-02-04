@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import br.biblioteca.beans.User;
+import br.biblioteca.model.User;
 import br.biblioteca.services.UserService;
 
 

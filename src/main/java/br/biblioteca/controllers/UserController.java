@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.biblioteca.beans.User;
+import br.biblioteca.model.User;
 import br.biblioteca.services.SecurityService;
 import br.biblioteca.services.UserService;
 import br.biblioteca.validator.LoginValidator;
