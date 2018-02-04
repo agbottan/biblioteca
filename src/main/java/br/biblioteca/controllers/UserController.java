@@ -43,6 +43,11 @@ public class UserController {
 		return new ModelAndView("user/form", "userForm", new User());
 	}
 
+	@GetMapping(value= {"erro_login"})
+	public ModelAndView erro_login() {
+		return new ModelAndView("user/erro_login");
+	}
+
 	@PostMapping("/autentication")
 	public ModelAndView autentication(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 
@@ -54,13 +59,28 @@ public class UserController {
 			return new ModelAndView("user/form");
 		}
 
+		System.out.println("1 ***********************************");
+
         // Login do Sprint.security
         Exception e = securityService.login(userForm.getUsername(), userForm.getPassword());
         
-        // Erro
-        if (e.getMessage() == "Bad credentials") {
-            return new ModelAndView("redirect:/teste");
-        };
+		System.out.println("2 ***********************************");
+
+		System.out.println(e.getCause()); // !!!
+		
+		// ------------------------------------
+		try {
+		
+			// Erro
+			if (e.getMessage() == "Bad credentials") {
+				System.out.println("3 ***********************************");
+            	return new ModelAndView("redirect:/erro_login");
+        	}
+        
+		} catch(Exception e2) {
+			e2.printStackTrace();
+		}
+		// ------------------------------------
 
         // Ok
         return new ModelAndView("redirect:/user/listar");

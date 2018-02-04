@@ -10,10 +10,10 @@
 <body>
 	<div layout:fragment="content" class="container">
 		<h1>Lista Admin</h1>
-		<h2>Acesso Liberado </h2>
+		<h2>Acesso Liberado <span sec:authentication="name"></span></h2>
 		<div>
 			<ul>
-				<li><a th:href="@{/user/list}" href="#"> Lista Basica </a></li>
+				<li><a th:href="@{/user/listar}" href="#"> Lista Basica </a></li>
 				<li><a th:href="@{/user/listadmin}" href="#"> Lista Admin </a></li>
 				<li><a th:href="@{/user/logout}" href="#"> Logout </a></li>
 			</ul>

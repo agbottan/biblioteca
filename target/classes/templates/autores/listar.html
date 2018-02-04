@@ -8,20 +8,20 @@
 </head>
 <body>
     <div layout:fragment="content" class="container">
-    	<table>
+    	<h1>Autores</h1>
+    	<table class="lista">
     		<thead>
-    			<tr>
+    			<tr class="cabecalho">
     				<td>ID</td>
-					<td>Nome</td>
-                    <td></td>
-                    <td></td>
+					<td width="100%">Nome</td>
+                    <td colspan="2">ações</td>
     			</tr>
     		</thead>
     		<tbody>
     			<tr th:if="${autores.empty}">
     				<td colspan="2">Sem autores</td>
     			</tr>
-    			<tr th:each="autor : ${autores}">
+    			<tr th:each="autor:${autores}" class="item">
     				<td th:text="${autor.id}">--</td>
     				<td>
     					<a href="#" th:href="@{'/autores/'+${autor.id}}" th:text="${autor.nome}"> Nome </a>

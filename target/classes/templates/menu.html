@@ -8,26 +8,7 @@
 <!-- MENU -->
 <nav th:fragment="menu">
     <ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <li class="item-n1">
-            <span class="lk-n1">Livros</span>
-            <ul class="sub">
-                <li><a href="@{/livros/list}">Listagem</a></li>
-                <li><a href="#">Novo</a></li>
-            </ul>
-        </li>
-
-        <li class="item-n1">
-            <span class="lk-n1">Autores</span>
-            <ul class="sub">
-                <li><a href="#">Menu 2.A</a></li>
-            </ul>
-        </li>
-
-=======
         <!-- Página Inicial -->
->>>>>>> Usuario
         <li class="item-n1">
             <a class="lk-n1" th:href="@{/}">Início</a>
         </li>
@@ -69,15 +50,11 @@
             </ul>
         </li>
 
-        <!-- SAIR
+        <!-- SAIR -->
         <li class="item-n1 pad">
-<<<<<<< HEAD
->>>>>>> Namespace
-=======
->>>>>>> Usuario
-            <a class="lk-n1" href="#">Sair</a>
+        	<span sec:authentication="name"></span>
+            <a class="lk-n1" th:href="@{/user/logout}">Sair</a>
         </li>
-        -->
     </ul>
 </nav>
 
