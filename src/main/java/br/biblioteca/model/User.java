@@ -1,67 +1,69 @@
 package br.biblioteca.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.beans.Transient;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 
 @Entity
+@Table(name = "user")
 public class User {
+    private Long id;
+    private String username;
+    private String password;
+    private String passwordConfirm;
+    private Set<Role> roles;
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
 
-	private String username;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	private String password;
+    public String getUsername() {
+        return username;
+    }
 
-	@OneToMany(
-		mappedBy="user",
-		cascade=CascadeType.ALL,
-		fetch=FetchType.EAGER
-	)
-	private List<Role> roles = new ArrayList<>();
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public User() {}
+    public String getPassword() {
+        return password;
+    }
 
-	public User(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    @Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", roles=" + roles + "]";
-	}
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

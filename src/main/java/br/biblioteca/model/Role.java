@@ -1,51 +1,55 @@
 package br.biblioteca.model;
 
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
+@Table(
+	name = "role",
+	uniqueConstraints={@UniqueConstraint(columnNames={"NAME"})}
+)
 public class Role {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
 
-	private String role;
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+    private Long id;
 
-	public Role(String role, User usuario) {
-		this.role = role;
-		this.user = usuario;
-	}
+    @Column(unique=true)
+    private String name;
 
-	public Role() {}
+    private Set<User> users;
 
-	public String getRole() {
-		return role;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public User getUsuario(){
-		return user;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Long getId(){
-		return id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "Role [role=" + role + "]";
-	}
+    @ManyToMany(mappedBy = "roles")
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
