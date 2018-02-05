@@ -1,142 +1,63 @@
 package br.biblioteca.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
 import br.biblioteca.model.User;
 import br.biblioteca.services.SecurityService;
 import br.biblioteca.services.UserService;
-import br.biblioteca.validator.LoginValidator;
 import br.biblioteca.validator.UserValidator;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private SecurityService securityService;
+    @Autowired
+    private SecurityService securityService;
 
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private UserValidator userValidator;
+    @Autowired
+    private UserValidator userValidator;
 
-	@Autowired
-	private LoginValidator loginValidator;
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
 
-	@GetMapping(value= {"", "/", "/login"})
-	public ModelAndView login() {
-		return new ModelAndView("user/form", "userForm", new User());
-	}
-
-	@GetMapping(value= {"erro_login"})
-	public ModelAndView erro_login() {
-		return new ModelAndView("user/erro_login");
-	}
-
-	@PostMapping("/autentication")
-	public ModelAndView autentication(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-
-        // Valida formulário
-		loginValidator.validate(userForm, bindingResult);
-		
-		// Já retorna se tem erros de validação
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("user/form");
-		}
-
-		System.out.println("1 ***********************************");
-
-        // Login do Sprint.security
-        Exception e = securityService.login(userForm.getUsername(), userForm.getPassword());
-        
-		System.out.println("2 ***********************************");
-
-		System.out.println(e.getCause()); // !!!
-		
-		// ------------------------------------
-		try {
-		
-			// Erro
-			if (e.getMessage() == "Bad credentials") {
-				System.out.println("3 ***********************************");
-            	return new ModelAndView("redirect:/erro_login");
-        	}
-        
-		} catch(Exception e2) {
-			e2.printStackTrace();
-		}
-		// ------------------------------------
-
-        // Ok
-        return new ModelAndView("redirect:/user/listar");
-	}
-
-	@GetMapping("/listar")
-	public ModelAndView listar() {
-		return new ModelAndView("/user/listar");
-	}
-	
-	@GetMapping("/listadmin")
-	public ModelAndView listadmin(User user) {
-
-		List<User> users = userService.findAll();
-		return new ModelAndView("/user/listadmin","users",users);
-	}
-
-    @GetMapping(value = "/registration")
-    public ModelAndView registration() {
-        
-        return new ModelAndView("user/registration", "userForm", new User());
+        return "registration";
     }
 
-	@PostMapping(value = "/registration")
-	public ModelAndView registrationform(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+        userValidator.validate(userForm, bindingResult);
 
-		userValidator.validate(userForm, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
 
-		if (bindingResult.hasErrors()) {
-			return new ModelAndView("user/registration");
-		}
-		
-		String password = userForm.getPassword();
+        userService.save(userForm);
 
-		userService.save(userForm);
+        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-		try {
-			securityService.login(userForm.getUsername(), password);
-			return new ModelAndView("redirect:/user/listar");
-			
-		} catch (Exception e) {
-			
-			return new ModelAndView("redirect:/user/login");
-		}
-	}
+        return "redirect:/welcome";
+    }
 
-	@GetMapping("/logout")
-	public String logout(HttpServletRequest request) {
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
 
-		HttpSession session = request.getSession(false);
-		SecurityContextHolder.clearContext();
-		if (session != null) {
-			session.invalidate();
-		}
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
 
-		return "redirect:/user/login";
-	}
+        return "login";
+    }
 
+    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "welcome";
+    }
 }

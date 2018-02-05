@@ -1,88 +1,51 @@
 package br.biblioteca.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken; // !!!
-import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import br.biblioteca.model.User;
-import br.biblioteca.repository.UserRepository;
 
 @Service
-public class SecurityServiceImpl implements SecurityService {
+public class SecurityServiceImpl implements SecurityService{
 
-   @Autowired
-   private AuthenticationManager authenticationManager;
-
-   @Autowired
-   private UserDetailsService userDetailsService;
-
-   @Override
-   public String findLoggedInUsername() {
-	   Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-	   if (userDetails instanceof UserDetails) {
-		   return ((UserDetails) userDetails).getUsername();
-	   }
-	   return null;
-   }
-
-   @Override
-   public UserDetails findLoggedInUser() {
-	   Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-	   if (userDetails instanceof UserDetails) {
-	  return (UserDetails) userDetails;
-	  }
-	  return null;
-   }
-
-   	/* !!!
-    @Override
-    public Exception login(String username, String password) {
-        try {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken( userDetails, password, userDetails.getAuthorities());
-
-            Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-
-            if (auth.isAuthenticated()) {
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
-
-        } catch (Exception e) {
-            return e;
-        };
-
-		return null;
-    }
-   	*/
+    /* Tinha que vir do Spring !!! */
+	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+	@Override
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserRepository _userRepo;
+    private UserDetailsService userDetailsService;
 
-	@Override
-    public Exception login(String username, String password) {
-        try {
+    private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
-            User _user = _userRepo.findByUsername(username);
+    @Override
+    public String findLoggedInUsername() {
+        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        if (userDetails instanceof UserDetails) {
+            return ((UserDetails)userDetails).getUsername();
+        }
 
-            // UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken( _user, password, _user.getAuthorities());
-            // !!!
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken( _user, password);
+        return null;
+    }
 
-            Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+    @Override
+    public void autologin(String username, String password) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-            if (auth.isAuthenticated()) {
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
+        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-        } catch (Exception e) {
-            return e;
-        };
-
-		return null;
+        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            logger.debug(String.format("Auto login %s successfully!", username));
+        }
     }
 }
