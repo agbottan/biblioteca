@@ -2,22 +2,12 @@
 /* RODAPÉ */
 
 #rodape {
-  border-top: #ccc 3px solid;
-  background-color: #ddd;
-}
 
-.rodape-box {
-  @include cf;
-}
+	padding-top: 15px;
+	color: #666;
 
-.assina {
-  padding: 15px 0;
-  margin: 20px 0 40px 0;
-  text-align: center;
-  font-size: 13px;
-  color: $cor-tema-1;
-
-  a:hover {
-    text-decoration: underline;
-  }
+	.assina {
+		text-align: center;
+		font-size: 80%;
+	}
 }
