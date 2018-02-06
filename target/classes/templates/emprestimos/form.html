@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layout">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>Empréstimos &ndash; Cadastrar Novo</title>
 </head>
 <body>
     <div layout:fragment="content" class="container">
-        <form id="livroForm" th:action="@{/livros/(form)}" method="post" th:object="${livro}" action="#" >
-            <input type="hidden"  th:field="*{id}" />
-            Título:<input type="text" th:field="*{nome}" />
-            <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
-            <br/>
-            Total de Páginas: <input type="text" th:field="*{quantidadePaginas}" />
-            <span  th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Quantidade de pagina Error</span>
-            <br/>
-            
-            <label for="staticAutor">Autor</label>
-            <select th:field="*{autor}">
-              <option th:each="autor : ${autores}"  th:value="${autor.id}" th:text="${autor.nome}">Nome do autor</option>
-            </select>
-            
-            <input type="submit" value="gravar" />
+		<h1>Empréstimos &ndash; Cadastrar Novo</h1>
+        <form id="emprestimoForm" class="form-principal" th:action="@{/emprestimos/(form)}" method="post" th:object="${emprestimo}" action="#" >
+
+            <input type="hidden" th:field="*{id}" />
+			<div class="cp">
+	            <label for="" class="gd">Livro:</label>
+	            <select th:field="*{livro}">
+	              <option th:each="livro : ${livros}" th:value="${livro.id}" th:text="${livro.nome}">[Livro]</option>
+	            </select>
+            </div>
+            <div class="cp">
+	            <label for="" class="gd">Data de Empréstimo:</label>
+	            <input type="date" th:field="*{dataEmprestimo}"/>
+            	<!-- <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span> -->
+            </div>
+            <div class="cp">
+	            <label for="" class="gd">Data de Devolução:</label>
+	            <input type="date" th:field="*{dataDevolucao}"/>
+            	<!-- <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span> -->
+            </div>
+			<div class="bt-base">
+                <button class="bt" type="submit" name="cadastrar">Cadastrar</button>
+            </div>
         </form>
     </div>
 </body>

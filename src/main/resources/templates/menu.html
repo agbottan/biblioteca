@@ -17,10 +17,9 @@
         <li class="item-n1">
             <span class="lk-n1">Usuários</span>
             <ul class="sub">
-                <li><a th:href="@{/user/login}">Login</a></li>
-                <li><a th:href="@{/user/registration}">Cadastrar Usuário</a></li>
-                <li><a th:href="@{/user/listar}">Lista Basic</a></li>
-                <li><a th:href="@{/user/listadmin}">Lista Admin</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/registration}">Cadastrar Usuário</a></li>
+                <li><a th:href="@{/user/listar}">Usuários Cadastrados</a></li>
             </ul>
         </li>
 
@@ -47,13 +46,14 @@
             <span class="lk-n1">Empréstimos</span>
             <ul class="sub">
                 <li><a th:href="@{/emprestimos/listar}">Empréstimos em aberto</a></li>
+                <li><a th:href="@{/emprestimos/novo}">Inserir novo empréstimo</a></li>
             </ul>
         </li>
 
         <!-- SAIR -->
         <li class="item-n1 pad">
         	<span sec:authentication="name"></span>
-            <a class="lk-n1" th:href="@{/user/logout}">Sair</a>
+            <a class="lk-n1" th:href="@{/logout}">Sair</a>
         </li>
     </ul>
 </nav>

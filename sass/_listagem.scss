@@ -6,11 +6,11 @@
   width: 100%;
 
   tr {
-    border: 1px #ccc solid;
+    border: 1px #eee solid;
   }
 
   .cabecalho {
-    background-color: #ddd;
+    background-color: #eee;
   }
 
   th, td {
@@ -41,7 +41,7 @@
 
   // Zebra
   .item:nth-child(2n) {
-    background-color: #eee;
+    background-color: #f3f3f3;
   }
 
   // Botões com Ações

@@ -11,6 +11,7 @@
 
   input[type="text"],
   input[type="password"],
+  input[type="date"],
   select,
   textarea {
 
@@ -33,6 +34,7 @@
 
   input[type="text"],
   input[type="password"],
+  input[type="date"],
   select {
     height: 35px;
     line-height: 35px;
@@ -50,8 +52,12 @@
     margin-right: 15px;
     display: inline-block;
     color: #777;
-    width: 125px;
+    width: 150px;
     font-size: 120%;
+
+    &.gd {
+    	width: 180px;
+    }
   }
 
   .acoes {
@@ -79,7 +85,9 @@
 
   .bt-base {
 
-    margin-top: 30px;
+	display: inline-block;
+    margin-top: 20px;
+    min-width: 570px;
     text-align: right;
 
     .bt {

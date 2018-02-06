@@ -8,16 +8,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div layout:fragment="content" class="container">
-		<h1>Lista Basica</h1>
-		<h2>Acesso Liberado <span sec:authentication="name"></span></h2>
-		<div>
-			<ul>
-				<li><a th:href="@{/user/listar}" href="#"> Lista Basica </a></li>
-				<li sec:authorize="hasAuthority('ROLE_ADMIN')" ><a th:href="@{/user/listadmin}" href="#"> Lista Admin </a></li>
-				<li><a th:href="@{/user/logout}" href="#"> Logout </a></li>
-			</ul>
-		</div>
-	</div>
+<div layout:fragment="content" class="container">
+	<h1>Usuários Cadastrados</h1>
+	<table class="lista">
+		<thead>
+			<tr class="cabecalho">
+				<td>ID</td>
+				<td width="100%">Nome</td>
+                <td colspan="2">ações</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${listaUsers.empty}">
+				<td colspan="2">Sem usuários</td>
+			</tr>
+			<tr th:each="user:${listaUsers}" class="item">
+				<td th:text="${user.id}">--</td>
+				<td>
+					<a href="#" th:href="@{'/listaUsers/'+${user.id}}" th:text="${user.username}">Nome</a>
+				</td>
+                <td>
+                    <a href="#" th:href="@{'/listaUsers/alterar/'+${user.id}}">editar</a>
+                </td>                
+                <td>
+                    <a href="#" th:href="@{'/listaUsers/excluir/'+${user.id}}">excluir</a>
+                </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </body>
 </html>

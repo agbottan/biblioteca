@@ -10,14 +10,21 @@
 <body>
     <div layout:fragment="content" class="container">
         <h1>Cadastrar Usuário</h1>
-	    <form id="userForm" class="form-principal" th:action="@{/user/registration}" th:object="${userForm}" action="#" method="post">
+	    <form id="userForm" class="form-principal" th:action="@{/registration}" th:object="${userForm}" action="#" method="post">
 	    	<div class="cp">
 	    		<label for="">Nome&thinsp;:</label>
-	        	<input type="text" th:field="*{username}"/><span  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span><br/>
+	        	<input type="text" th:field="*{username}"/>
+	        	<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span><br/>
 	    	</div>
 	    	<div class="cp">
 	        	<label for="">Senha&thinsp;:</label>
-	        	<input type="text" th:field="*{password}"/><span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
+	        	<input type="text" th:field="*{password}"/>
+	        	<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
+	        </div>
+	        <div class="cp">
+	        	<label for="">Confirmar Senha&thinsp;:</label>
+	        	<input type="text" th:field="*{passwordConfirm}"/>
+	        	<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
 	        </div>
 	        <div class="bt-base">
 	        	<input class="bt" type="submit" name="cadastrar" value="Cadastrar" />

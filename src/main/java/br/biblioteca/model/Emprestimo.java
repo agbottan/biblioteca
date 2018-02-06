@@ -4,6 +4,7 @@ package br.biblioteca.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -13,13 +14,16 @@ import javax.persistence.TemporalType;
 public class Emprestimo {
 	
 	@Id
+	@GeneratedValue
 	private Long id;
 	
+	/* !!!
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataEmprestimo;
+	@Temporal(TemporalType.TIMESTAMP)
+	*/
+	private String dataEmprestimo;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataDevolucao;
+	private String dataDevolucao;
 	
 	@ManyToOne
 	private Livro livro;
@@ -40,19 +44,19 @@ public class Emprestimo {
 		this.id = id;
 	}
 
-	public Date getDataEmprestimo() {
+	public String getDataEmprestimo() {
 		return dataEmprestimo;
 	}
 
-	public void setDataEmprestimo(Date dataEmprestimo) {
+	public void setDataEmprestimo(String dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
 
-	public Date getDataDevolucao() {
+	public String getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(String dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 }

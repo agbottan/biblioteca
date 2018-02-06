@@ -3,16 +3,21 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
+<title>Livros &ndash; Cadastrar Novo</title>
 </head>
 <body>
 	<div layout:fragment="content" class="container">
+		<h1>Autor &ndash; Cadastrar Novo</h1>
 		<form id="autorForm" class="form-principal" th:action="@{/autores/(form)}" method="post" th:object="${autor}" action="#" >
 			<input type="hidden"  th:field="*{id}" />
-			Nome:<input type="text" th:field="*{nome}" />
-			<span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
-			<br/>
-			<input type="submit" value="gravar" />
+			<div class="cp">
+	            <label for="">Nome:</label>
+	            <input type="text" th:field="*{nome}" />
+	            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span>
+            </div>
+			<div class="bt-base">
+                <button class="bt" type="submit" name="cadastrar">Cadastrar</button>
+            </div>
 		</form>
 	</div>
 </body>
