@@ -10,16 +10,16 @@
 <body>
     <div layout:fragment="content" class="container">
         <h1>Login</h1>
-        <form id="userForm" class="form-principal" th:action="@{/autentication}" th:object="${userForm}" action="#" method="post">
+        <form id="userForm" class="form-principal" th:action="@{/autentication}" th:object="${userForm}" method="post">
             <div class="cp">
                 <label for="">Login&thinsp;:</label>
                 <input type="text" th:field="*{username}"/>
-                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span>
+                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
             </div>
             <div class="cp">
                 <label for="">Senha&thinsp;:</label>
                 <input type="text" th:field="*{password}"/>
-                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span>
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             </div>
             <div class="bt-base">
                 <button class="bt" type="submit" name="login">Login</button>
