@@ -1,4 +1,4 @@
-package br.biblioteca.beans;
+package br.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;

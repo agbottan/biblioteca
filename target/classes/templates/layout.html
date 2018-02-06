@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8" />
 <title>Empréstimo de Livros</title>
@@ -20,6 +21,19 @@
         </div>
     </div>
 </header>
+
+<!--
+<span sec:authentication="username">[username]</span>
+<div sec:authorize="isAuthenticated()">
+This content is only shown to authenticated users.
+</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+This content is only shown to administrators.
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+This content is only shown to users.
+</div>
+-->
 
 <main class="principal principal-home">
   <div class="contem">

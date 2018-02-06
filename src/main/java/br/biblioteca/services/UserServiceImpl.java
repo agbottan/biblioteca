@@ -1,41 +1,54 @@
 package br.biblioteca.services;
 
+import br.biblioteca.model.User;
+import br.biblioteca.model.Role;
+import br.biblioteca.repository.RoleRepository;
+import br.biblioteca.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-// import br.biblioteca.beans.Role;
-import br.biblioteca.beans.User;
-import br.biblioteca.repository.UserRepository;
-
-import java.util.List;
+import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
-    
+    @Autowired
+    private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    @Transactional
     public void save(User user) {
-    	user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        // !!! user.getRoles().add(new Role("ROLE_BASIC"));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        //user.setRoles(new HashSet<>(roleRepository.findAll()));
+        // HashSet<Role> roles = new HashSet<>(roleRepository.findAll());
+
+        HashSet<Role> roles = new HashSet<>();
+
+        // ROLE_BASIC
+        Role roleBasic = new Role();
+        roleBasic.setId(1L);
+        roleBasic.setName("ROLE_BASIC");
+        roles.add(roleBasic);
+
+        // ROLE_ADMIN
+        /**/
+        Role roleAdmin = new Role();
+        roleAdmin.setId(2L);
+        roleAdmin.setName("ROLE_ADMIN");
+        roles.add(roleAdmin);
+        /**/
+
+        user.setRoles(roles);
+
         userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-
         return userRepository.findByUsername(username);
-    }
-
-    @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
     }
 }

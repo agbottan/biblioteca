@@ -7,34 +7,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <div layout:fragment="content" class="container">
-    	<h1>Autores</h1>
-    	<table class="lista">
-    		<thead>
-    			<tr class="cabecalho">
-    				<td>ID</td>
-					<td width="100%">Nome</td>
-                    <td colspan="2">ações</td>
-    			</tr>
-    		</thead>
-    		<tbody>
-    			<tr th:if="${autores.empty}">
-    				<td colspan="2">Sem autores</td>
-    			</tr>
-    			<tr th:each="autor:${autores}" class="item">
-    				<td th:text="${autor.id}">--</td>
-    				<td>
-    					<a href="#" th:href="@{'/autores/'+${autor.id}}" th:text="${autor.nome}"> Nome </a>
-    				</td>
-                    <td>
-                        <a href="#" th:href="@{'/autores/alterar/'+${autor.id}}" > Altera </a>
-                    </td>                
-                    <td>
-                        <a href="#" th:href="@{'/autores/excluir/'+${autor.id}}" > Excluir </a>
-                    </td>
-    			</tr>
-    		</tbody>
-    	</table>
-    </div>
+<div layout:fragment="content" class="container">
+	<h1>Autores</h1>
+	<table class="lista">
+		<thead>
+			<tr class="cabecalho">
+				<td>ID</td>
+				<td width="100%">Nome</td>
+                <td colspan="2">ações</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${autores.empty}">
+				<td colspan="2">Sem autores</td>
+			</tr>
+			<tr th:each="autor:${autores}" class="item">
+				<td th:text="${autor.id}">[id]</td>
+				<td th:text="${autor.nome}">[Título]</td>
+                <td><a th:href="@{'/autores/alterar/'+${autor.id}}">Altera</a></td>                
+                <td><a th:href="@{'/autores/excluir/'+${autor.id}}">Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </body>
 </html>

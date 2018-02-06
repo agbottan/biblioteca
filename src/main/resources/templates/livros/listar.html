@@ -4,26 +4,30 @@
     layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
-<title>Lista dos livros</title>
+<title>Livros &ndash; Títulos Diponíveis</title>
 </head>
 <body>
     <div layout:fragment="content" class="container">
-        <h1>teste</h1>
-        <table class="table">
+        <h1>Livros &ndash; Títulos Diponíveis</h1>
+        <table class="lista">
             <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                <tr class="cabecalho">
+                    <td>ID</td>
+                    <td width="50%">Título</td>
+                    <td width="50%">Autor</td>
+                    <td colspan="2">ações</td>
                 </tr>
             </thead>
             <tbody>
+            	<tr th:if="${livros.empty}">
+					<td colspan="2">Sem livros</td>
+				</tr>
                 <tr th:each="livro : ${livros}">
-                    <th scope="row" th:text="${livro.id}">1</th>
-                    <td><a href="#" th:href="@{'/livros/'+${livro.id}}" th:text="${livro.nome}"> Título </a></td>
-                    <td><a href="#" th:href="@{'/livros/alterar/'+${livro.id}}"> Altera </a></td>
-                    <td><a href="#" th:href="@{'/livros/excluir/'+${livro.id}}"> Excluir </a></td>
+                    <td th:text="${livro.id}">[id]</td>
+                    <td th:text="${livro.nome}">[Título]</td>
+                    <td th:text="${livro.autor.nome}">[Autor]</td>
+                    <td><a th:href="@{'/livros/alterar/'+${livro.id}}">alterar</a></td>
+                    <td><a th:href="@{'/livros/excluir/'+${livro.id}}">excluir</a></td>
                 </tr>
             </tbody>
         </table>
