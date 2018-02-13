@@ -1,8 +1,8 @@
 package br.biblioteca.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -16,6 +16,9 @@ public class IndexController {
 
     @GetMapping("/teste")
 	public ModelAndView teste() {
-		return new ModelAndView("teste");
+
+		ModelMap map = new ModelMap();
+		map.put("message", "Baeldung");
+		return new ModelAndView("teste", map);
 	}
 }

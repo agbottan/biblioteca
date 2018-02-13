@@ -1,10 +1,5 @@
 package br.biblioteca.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,11 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import javax.validation.Valid;
 
-import br.biblioteca.model.Autor;
 import br.biblioteca.model.Emprestimo;
 import br.biblioteca.model.Livro;
-import br.biblioteca.repository.AutorRepository;
 import br.biblioteca.repository.LivroRepository;
 import br.biblioteca.repository.EmprestimoRepository;
 

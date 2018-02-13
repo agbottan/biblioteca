@@ -3,7 +3,6 @@ package br.biblioteca;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -32,95 +31,64 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-/////////////////////////////////
-
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity httpSec) throws Exception {
 
 /* !!!
-		http.authorizeRequests().anyRequest().permitAll();
+		httpSec.authorizeRequests().anyRequest().permitAll();
 */
-    	http.authorizeRequests()
+    	httpSec.authorizeRequests()
 
-    		// Qualquer um pode
-			.antMatchers(
+		// Qualquer um pode
+		.antMatchers(
 
-			// Arquivos do site
-			"/css/**",
-			"/resources/**",
-			
-			// ------------ PÁGINAS ------------
+		// Arquivos do site
+		"/css/**",
+		"/resources/**",
+		
+		// ------------ PÁGINAS ------------
 
-			// Index
-			"/index",
+		// Index
+		"/index",
 
-			// Livros
-			"/livros/listar", "/livros/novo",
+		// Livros
+		"/livros/listar", "/livros/novo",
 
-			// Autores
-			"/autores/listar", "/autores/novo",
+		// Autores
+		"/autores/listar", "/autores/novo",
 
-			// Empréstimos
-			"/emprestimos/listar", "/emprestimos/novo",
+		// Empréstimos
+		"/emprestimos/listar", "/emprestimos/novo",
 
-			// Usuários
-			"/user/listar",
-    		
-			// Cadastrar-se como usuário
-			"/registration"
+		// Usuários
+		"/user/listar",
+		
+		// Cadastrar-se como usuário
+		"/registration",
+		
+		// Autenticar-se como usuário
+		"/authentication",
 
-			).permitAll()
+		// !!! Teste
+		"/teste"
+		
+		).permitAll()
 
-    		// Tem que estar autenticado
-        	.anyRequest().authenticated()
-        
-        	// Login
-			.and().formLogin()
-				.loginPage("/login")
-				.failureUrl("/login-erro")
-				.permitAll()
+		// Tem que estar autenticado
+    	.anyRequest().authenticated()
+    
+    	// Login
+		.and().formLogin()
+			.loginPage("/login")
+			.failureUrl("/login-erro")
+			.permitAll()
 
-        	// Logout
-			.and()
-				.logout()
-				.logoutSuccessUrl("/logout")
-				.permitAll();
+    	// Logout
+		.and()
+			.logout()
+			.logoutSuccessUrl("/logout")
+			.permitAll();
 	}
-
-/////////////////////////////////
-
-/*
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-
-	    http
-	    // 'CROSS SITE REQUEST FORGERY'
-	    .csrf().disable()
-
-	    // GET
-	    .authorizeRequests().antMatchers(HttpMethod.GET, "/user/registration").permitAll()
-
-	    // POST
-	    .antMatchers(HttpMethod.POST, "/user/registration").permitAll()
-
-	    // ROLE - BASIC
-	    .antMatchers(HttpMethod.GET, "/user/listar").hasRole("BASIC")
-
-	    // ROLE - ADMIN
-	    .antMatchers(HttpMethod.GET, "/user/*r").hasRole("ADMIN")
-
-	    // PÁGINA DE LOGIN
-	    .and().formLogin().loginPage("/user/login").permitAll()
-
-	    // ACESSO NEGADO
-	    .and().exceptionHandling().accessDeniedPage("/teste")
-
-	    // LOGOUT
-	    .and().logout().permitAll();
-	}
-*/
-
-/////////////////////////////////
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

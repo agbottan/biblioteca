@@ -11,6 +11,9 @@
         <!-- Página Inicial -->
         <li class="item-n1">
             <a class="lk-n1" th:href="@{/}">Início</a>
+			<ul class="sub">
+                <li><a th:href="@{/teste}">TESTE</a></li>
+            </ul>
         </li>
 
         <!-- Usuários -->
@@ -18,6 +21,8 @@
             <span class="lk-n1">Usuários</span>
             <ul class="sub">
                 <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/teste}">TESTE</a></li>
+                <li><a th:href="@{/authentication}">Auth Teste</a></li>
                 <li><a th:href="@{/registration}">Cadastrar Usuário</a></li>
                 <li><a th:href="@{/user/listar}">Usuários Cadastrados</a></li>
             </ul>
@@ -46,7 +51,7 @@
             <span class="lk-n1">Empréstimos</span>
             <ul class="sub">
                 <li><a th:href="@{/emprestimos/listar}">Empréstimos em aberto</a></li>
-                <li><a th:href="@{/emprestimos/novo}">Inserir novo empréstimo</a></li>
+                <li><a th:href="@{/emprestimos/novo}">Criar novo empréstimo</a></li>
             </ul>
         </li>
 

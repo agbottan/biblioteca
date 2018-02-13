@@ -10,7 +10,7 @@
 <body>
     <div layout:fragment="content" class="container">
         <h1>Login</h1>
-        <form id="userForm" class="form-principal" th:action="@{/autentication}" th:object="${userForm}" method="post">
+        <form id="userForm" class="form-principal" th:action="@{/authentication}" th:object="${userForm}" method="post">
             <div class="cp">
                 <label for="">Login&thinsp;:</label>
                 <input type="text" th:field="*{username}"/>

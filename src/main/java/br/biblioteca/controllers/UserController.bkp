@@ -48,8 +48,8 @@ public class UserControllerBkp {
 		return new ModelAndView("user/erro_login");
 	}
 
-	@PostMapping("/autentication")
-	public ModelAndView autentication(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+	@PostMapping("/authentication")
+	public ModelAndView authentication(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 
         // Valida formulário
 		loginValidator.validate(userForm, bindingResult);
