@@ -8,13 +8,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
-	
+
+///////// PÁGINA INICIAL
+
 	@GetMapping(value= {"/", "/index"})
 	public ModelAndView home() {
 		return new ModelAndView("index");
 	}
 
-    @GetMapping("/teste")
+
+///////// TESTE
+
+	/*
+	@GetMapping("/teste")
+	public ModelAndView teste() {
+
+		ModelMap map = new ModelMap();
+		map.put("message", "Baeldung");
+		return new ModelAndView("teste", map);
+	}
+	*/
+
+
+///////// DUMPA VARIÁVEIS
+
+	@GetMapping("/vars")
 	public ModelAndView teste() {
 
 		ModelMap map = new ModelMap();

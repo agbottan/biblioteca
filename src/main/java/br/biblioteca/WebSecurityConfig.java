@@ -1,6 +1,8 @@
 package br.biblioteca;
 
+import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +19,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Bean
+    ServletRegistrationBean h2servletRegistration(){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
+        registrationBean.addUrlMappings("/console/*");
+        return registrationBean;
+    }
 
     /* !!! */
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
@@ -70,8 +79,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		"/authentication",
 
 		// !!! Teste
-		"/teste"
+		"/teste",
 		
+		// Banco H2
+		"/console/**"
+
 		).permitAll()
 
 		// Tem que estar autenticado
@@ -88,7 +100,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 			.logoutSuccessUrl("/logout")
 			.permitAll();
+
+		// Banco H2
+		httpSec.csrf().disable();
+		httpSec.headers().frameOptions().disable();
 	}
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
