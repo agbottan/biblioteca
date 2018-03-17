@@ -28,14 +28,33 @@ Object userDetails = SecurityContextHolder.getContext().getAuthentication().getD
 <p th:text="${SecurityContextHolder.getContext().getAuthentication().getDetails()}"></p>
 <h2 th:text="${pageContext.request.userPrincipal.name}"></h2>
 
-<p th:text="${session.size()}">[tete]</p>
 <p th:text="${SecurityContextHolder.getContext()}">[tete]</p>
--->
-<p th:text="${#request.userPrincipal.name}">[tete]</p>
 
+<p th:text="${#request.userPrincipal.name}">[tete]</p>
+<p th:text="${#request.userPrincipal.password}">[tete]</p>
+-->
+
+<p th:text="${session}">[session.size()]</p>
+<p th:text="${session.size()}">[session.size()]</p>
+<p>${session.size()}</p>
+
+<hr>
+<p th:text="${session.containsKey('teste')}">[tete]</p>
+<p th:text="${!session.containsKey('teste')}">[tete]</p>
+<p th:text="${session.foo}">[tete]</p>
+<p th:text="${session.banana}">[tete]</p>
+<hr>
+<p th:text="${#ctx.request}">[tete]</p>
+
+<p th:if="${session.containsKey('banana')}">Banana</p>
+
+<p th:text="${#ctx.httpSession}">${#ctx.httpSession}</p>
 
 <p sec:authentication="name">[name]</p>
+
+<!--
 <p sec:authentication="username">[username]</p>
+
 <div sec:authorize="isAuthenticated()">
 This content is only shown to authenticated users.
 </div>
@@ -45,6 +64,7 @@ This content is only shown to administrators.
 <div sec:authorize="hasRole('ROLE_USER')">
 This content is only shown to users.
 </div>
+-->
 
 <main class="principal principal-home">
   <div class="contem">

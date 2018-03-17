@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,6 +32,7 @@ public class Livro {
     @Min(10)
 	private Long quantidadePaginas;
 	
+    @Transient
 	private String isbn;
 	
 	@ManyToOne

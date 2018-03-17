@@ -1,6 +1,5 @@
 package br.biblioteca.model;
 
-import java.beans.Transient;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -9,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 
@@ -16,9 +16,11 @@ import javax.persistence.JoinColumn;
 @Entity
 @Table(name = "user")
 public class User {
+
     private Long id;
     private String username;
     private String password;
+    @Transient
     private String passwordConfirm;
     private Set<Role> roles;
 
@@ -48,7 +50,6 @@ public class User {
         this.password = password;
     }
 
-    @Transient
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
