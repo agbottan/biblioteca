@@ -56,5 +56,5 @@ insert into LIVRO (ID, FOTO, NOME, QUANTIDADE_PAGINAS, AUTOR_ID) values
 -------------------
 */
 insert into EMPRESTIMO (ID, DATA_DEVOLUCAO, DATA_EMPRESTIMO, LIVRO_ID) values
-	(1, '03/17/2018', '06/17/2018', 1),
-	(2, '04/17/2018', '08/17/2018', 2);
+	(1, '06/17/2018', '03/17/2018', 1),
+	(2, '08/17/2018', '04/17/2018', 2);

@@ -42,7 +42,7 @@ public class AutorController {
         }
 
         autor = autorRepository.save(autor);
-            return new ModelAndView("redirect:/autores/");
+			return new ModelAndView("redirect:/autores/");
     }
 	
 	@GetMapping("/alterar/{id}")

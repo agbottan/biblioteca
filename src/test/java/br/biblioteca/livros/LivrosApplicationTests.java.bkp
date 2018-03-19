@@ -116,7 +116,7 @@ public class LivrosApplicationTests {
 		autorExcluido = this.autorRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(autorExcluido).isNotNull();
 
-		// Remove o autor incluido no teste e faz uma busca de autor pelo nome, para verificar se foi excluído
+		// Remove o autor incluido no teste e faz uma busca de autor pelo noma, para verificar se foi excluído
 		this.autorRepository.delete(autorExcluido);
 		autorExcluido = this.autorRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(autorExcluido).isNull();
@@ -201,7 +201,7 @@ public class LivrosApplicationTests {
 		TESTA A EXCLUSÃO DE UM LIVRO
 	*/
 	@Test
-	public void testeExcluirLivro() {
+	public void testeExcluirEmprestimo() {
 
 		// Cria um novo livro com nome 'TESTE DE EXCLUSÃO' e insere no banco
 		Livro livroExcluido = new Livro();
@@ -214,7 +214,7 @@ public class LivrosApplicationTests {
 		livroExcluido = this.livroRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(livroExcluido).isNotNull();
 
-		// Remove o livro incluido no teste e faz uma busca de livro pelo nome, para verificar se foi excluído
+		// Remove o livro incluido no teste e faz uma busca de livro pelo noma, para verificar se foi excluído
 		this.livroRepository.delete(livroExcluido);
 		livroExcluido = this.livroRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(livroExcluido).isNull();
@@ -230,23 +230,65 @@ public class LivrosApplicationTests {
 	EmprestimoRepository emprestimoRepository;
 
 	/*
+		TESTA A BUSCA DE UM EMPRÉSTIMO PELO NOME
+	*/
+	@Test
+	public void testeBuscarEmprestimoPorId() {
+
+		/*
+		Busca o empréstimo com Id 3, que não consta no banco inicial, e verifica o resultado, que deve ser nulo
+		*/
+		Emprestimo emprestimoNaoEncontrado = this.emprestimoRepository.findOne(1l);
+		assertThat(emprestimoNaoEncontrado).isNull();
+		
+		/*
+		Busca o empréstimo 'Dom Casmurro', que consta no banco inicial, e verifica o resultado, que deve ser 'não nulo', e a propriedade nome, que deve ser 'Machado de Assis'
+		*/
+		Emprestimo emprestimoEncontrado = this.emprestimoRepository.findByNome("Dom Casmurro");
+		assertThat(emprestimoEncontrado).isNotNull();
+		assertThat(emprestimoEncontrado.getNome()).isEqualTo("Dom Casmurro");
+	}
+
+	/*
+		TESTA A ALTERAÇÃO DO NOME DE UM EMPRÉSTIMO
+	*/
+	@Test
+	public void testeAlterarNomeEmprestimo() {
+
+		// Busca o empréstimo com nome 'Dom Casmurro', que consta no banco inicial, altera o nome para 'Dom Casmurro <ALTERADO>' e armazena a ID para comparação posterior
+		Emprestimo emprestimoTeste = this.emprestimoRepository.findByNome("Dom Casmurro");
+		Long emprestimoTesteId = emprestimoTeste.getId();
+
+		// Altera o nome do emprestimoTeste 'Machado de Assis' para 'Machado de Assis <ALTERADO>' e salva no banco
+		emprestimoTeste.setNome("Dom Casmurro <ALTERADO>");
+		this.emprestimoRepository.save(emprestimoTeste);
+
+		// Busca o empréstimo com a Id de 'emprestimoTeste', que deve se referir ao mesmo registro no banco
+		Emprestimo emprestimoTesteConfirma = this.emprestimoRepository.findOne(emprestimoTesteId);
+
+		// Verifica se os nomes de 'emprestimoTeste' e 'emprestimoTesteAlterado' são iguais
+		assertThat(emprestimoTesteConfirma.getNome()).isEqualTo(emprestimoTeste.getNome());
+
+		// Restaura o nome original para não alterar o banco
+		emprestimoTeste.setNome("Dom Casmurro");
+		this.emprestimoRepository.save(emprestimoTeste);
+	}
+
+	/*
 		TESTA A INCLUSÃO DE UM NOVO EMPRÉSTIMO
 	*/
 	@Test
 	public void testeIncluirEmprestimo() {
 
-		// Verifica se não há no banco um empréstimo com a data de retirada igual a '01/01/1900'
-		assertThat(this.emprestimoRepository.findByDataEmprestimo("01/01/1900")).isNull();
-
-		// Cria um novo empréstimo com a data de retirada igual a '01/01/1900' e insere no banco
+		// Cria um novo empréstimo com nome 'TESTE DE INCLUSÃO' e insere no banco
 		Emprestimo emprestimoInserido = new Emprestimo();
-			emprestimoInserido.setDataEmprestimo("01/01/1900");
-			emprestimoInserido.setDataDevolucao("01/02/1900");
+			emprestimoInserido.setNome("TESTE DE INCLUSÃO");
+			emprestimoInserido.setQuantidadePaginas(100l);
 
 		this.emprestimoRepository.save(emprestimoInserido);
 
-		// Verifica se agora há no banco um empréstimo com a data de retirada igual a '01/01/1900', que é o que acabamos de inserir
-		Emprestimo emprestimoEncontrado = this.emprestimoRepository.findByDataEmprestimo("01/01/1900");
+		// Verifica se há no banco um empréstimo com o nome 'TESTE DE INCLUSÃO', que é o que acabamos de inserir
+		Emprestimo emprestimoEncontrado = this.emprestimoRepository.findByNome("TESTE DE INCLUSÃO");
 		assertThat(emprestimoEncontrado).isNotNull();
 
 		// Remove o empréstimo incluido no teste, para que o banco retorne ao estado inicial
@@ -257,56 +299,22 @@ public class LivrosApplicationTests {
 		TESTA A EXCLUSÃO DE UM EMPRÉSTIMO
 	*/
 	@Test
-	public void testeExcluirEmprestimo() {
+	public void testeExcluirLivro() {
 
-		// Verifica se não há no banco um empréstimo com a data de retirada igual a '01/01/1900'
-		assertThat(this.emprestimoRepository.findByDataEmprestimo("01/01/1900")).isNull();
-
-		// Cria um novo empréstimo com a data de retirada igual a '01/01/1900' e insere no banco
+		// Cria um novo empréstimo com nome 'TESTE DE EXCLUSÃO' e insere no banco
 		Emprestimo emprestimoExcluido = new Emprestimo();
-			emprestimoExcluido.setDataEmprestimo("01/01/1900");
-			emprestimoExcluido.setDataDevolucao("01/02/1900");
+			emprestimoExcluido.setNome("TESTE DE EXCLUSÃO");
+			emprestimoExcluido.setQuantidadePaginas(100l);
 
 		this.emprestimoRepository.save(emprestimoExcluido);
 
-		// Verifica se há no banco um empréstimo com a data de retirada '01/01/1900', que é o que acabamos de inserir
-		emprestimoExcluido = this.emprestimoRepository.findByDataEmprestimo("01/01/1900");
+		// Verifica se há no banco um empréstimo com o nome 'TESTE DE EXCLUSÃO', que é o que acabamos de inserir
+		emprestimoExcluido = this.emprestimoRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(emprestimoExcluido).isNotNull();
 
-		// Remove o empréstimo incluido no teste e faz uma busca de empréstimo pela data de retirada, para verificar se foi excluído
+		// Remove o empréstimo incluido no teste e faz uma busca de empréstimo pelo noma, para verificar se foi excluído
 		this.emprestimoRepository.delete(emprestimoExcluido);
-		emprestimoExcluido = this.emprestimoRepository.findByDataEmprestimo("01/01/1900");
+		emprestimoExcluido = this.emprestimoRepository.findByNome("TESTE DE EXCLUSÃO");
 		assertThat(emprestimoExcluido).isNull();
-	}
-
-	/*
-		TESTA A ALTERAÇÃO DA DATA DE ENTREGA DE UM EMPRÉSTIMO
-	*/
-	@Test
-	public void testeAlterarDataDevolucaoEmprestimo() {
-
-		/*
-			Busca, pela Id, o empréstimo com data de devolução '08/17/2018', que consta no banco inicial
-			Verifica se a data de devolução é igual a '08/17/2018'
-		*/
-		Emprestimo emprestimoTeste = this.emprestimoRepository.findOne(2l);
-		assertThat(emprestimoTeste.getDataDevolucao()).isEqualTo("08/17/2018");
-
-		/*
-			Altera a data de devolução para '08/20/2018'
-		*/
-		emprestimoTeste.setDataDevolucao("08/20/2018");
-		this.emprestimoRepository.save(emprestimoTeste);
-
-		/*
-			Busca o empréstimo com a Id '2', que deve se referir ao registro que alteramos
-			Verifica se as datas de devolução do iguais
-		*/
-		Emprestimo emprestimoTesteVerifica = this.emprestimoRepository.findOne(2l);
-		assertThat(emprestimoTeste.getDataDevolucao()).isEqualTo(emprestimoTesteVerifica.getDataDevolucao());
-
-		// Restaura a data original para não alterar o banco
-		emprestimoTesteVerifica.setDataDevolucao("08/17/2018");
-		this.emprestimoRepository.save(emprestimoTesteVerifica);
 	}
 }

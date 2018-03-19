@@ -5,4 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.biblioteca.model.Livro;
 
-public interface LivroRepository  extends JpaRepository <Livro, Long> { }
+public interface LivroRepository  extends JpaRepository <Livro, Long> {
+	
+	public Livro findByNome(String nome);
+}
