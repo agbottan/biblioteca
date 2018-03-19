@@ -87,6 +87,13 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+
+		<!-- SELENIUM -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.53.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
