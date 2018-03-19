@@ -1,8 +1,9 @@
-
 /*
---------------
-	ROLES
---------------
+-------------------
+	CRIA ROLES
+-------------------
+
+Cria o 'ROLE_BASIC' E O 'ROLE_ADMIN' se ainda não houver.
 */
 
 -- Cliente Básico
